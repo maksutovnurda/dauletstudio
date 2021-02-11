@@ -1,0 +1,134 @@
+<div class="addpost">
+						<span onclick="showAddPost()" class="addpost-show">+</span>
+						<div id="addpost" class="dn">
+							<div class="dffdc">
+								<input type="text" class="addpost-input" placeholder="Тақырып" id="title">
+								<div class="commands">
+							      <div class="group-command">
+							        <button onclick="execCmd('bold', this)" title="Қалың/жирный"><i class="fa fa-bold"></i></button>
+							        <button onclick="execCmd('italic', this)" title="Курсив"><i class="fa fa-italic"></i></button>
+							        <button onclick="execCmd('underline', this)" title="Асты сызылған/подчеркнутый"><i class="fa fa-underline"></i></button>
+							        <button onclick="execCmd('strikeThrough', this)" title="Өшірілген"><i class="fa fa-strikethrough"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('justifyLeft', this)" title="Сол жаққа"><i class="fa fa-align-left"></i></button>
+							        <button onclick="execCmd('justifyCenter', this)" title="Ортаға"><i class="fa fa-align-center"></i></button>
+							        <button onclick="execCmd('justifyRight', this)" title="Оң жаққа"><i class="fa fa-align-right"></i></button>
+							        <button onclick="execCmd('justifyFull', this)" title="Бастапты күй"><i class="fa fa-align-justify"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('cut')" title="Қию/Вырезать"><i class="fa fa-cut"></i></button>
+							        <button onclick="execCmd('copy')" title="Қою/Вставить"><i class="fa fa-copy"></i></button>
+							        <button onclick="execCmd('SelectAll')" title="Барлығын белгілеу/выделить все"><i class="fa fa-file-o"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('indent')" title="tab"><i class="fa fa-indent"></i></button>
+							        <button onclick="execCmd('outdent')" title="shift+tab"><i class="fa fa-dedent"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('subscript', this)" title="Төменгі жол"><i class="fa fa-subscript"></i></button>
+							        <button onclick="execCmd('superscript', this)" title="Жоғарғы жол"><i class="fa fa-superscript"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('undo')" title="бас тарту/отменить"><i class="fa fa-undo"></i></button>
+							        <button onclick="execCmd('removeFormat')"><i class="fa fa-times"></i></button>
+							        <button onclick="execCmd('redo')" title="қайтару/вернуть"><i class="fa fa-repeat"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="execCmd('insertUnorderedList', this)" title="Реттелмеген тізім"><i class="fa fa-list-ul"></i></button>
+							        <button onclick="execCmd('insertOrderedList', this)" title="Реттелген тізім"><i class="fa fa-list-ol"></i></button>
+							        <button onclick="execCmd('insertHorizontalRule')" title="Горизонталь сызық/линия">hr</button>
+							      </div>
+							      
+							      <div class="group-command">
+							        <button onclick="execCmdArgument('createLink', prompt('Сілтеме:', ''))" title="Сілтеме қою"><i class="fa fa-link"></i></button>
+							        <button onclick="execCmd('unlink')"><i class="fa fa-unlink"></i></button>
+							        <button onclick="execCmdArgument('insertImage', prompt('Суретке сілтеме:', ''))" title="Сілтемены алу"><i class="fa fa-picture-o"></i></button>
+							      </div>
+							      <div class="group-command">
+							        <button onclick="toggleSource(this)"><i class="fa fa-code" title="Бастапқы код/исходный код"></i></button>
+							        <button onclick="toggleEdit(this)" title="Көру"><i class="fa fa-eye"></i></button>
+							      </div>
+							      <select onchange="execCmdArgument('formatBlock', this.value)">
+							        <option>H</option>
+							        <option value="h1">h1</option>
+							        <option value="h2">h2</option>
+							        <option value="h3">h3</option>
+							        <option value="h4">h4</option>
+							        <option value="h5">h5</option>
+							        <option value="h6">h6</option>
+							        <option value="P">Параграф</option>
+							        <option value="pre">Код</option>
+							      </select>
+							      <select onchange="execCmdArgument('fontName', this.value)">
+							        <option value="Times New Roman">Times New Roman</option>
+							        <option value="Comic Sans MS">Comic Sans MS</option>
+							        <option value="Courier">Courier</option>
+							        <option value="Georgia">Georgia</option>
+							        <option value="Tahoma">Tahoma</option>
+							        <option value="Verdana">Verdana</option>
+							        <option value="Arial">Arial</option>
+							      </select>
+							      <select onchange="execCmdArgument('fontSize', this.value)">
+							        <option value="1">1</option>
+							        <option value="2">2</option>
+							        <option value="3">3</option>
+							        <option value="4">4</option>
+							        <option value="5">5</option>
+							        <option value="6">6</option>
+							      </select>
+							      <input type="color" class="colorinput" onchange="execCmdArgument('foreColor', this.value)">
+							      <input type="color" class="colorinput" onchange="execCmdArgument('hiliteColor', this.value)">
+							    </div>
+							    <div id="textField" contenteditable="true" data-text="Толық текст" class="textField" spellcheck="false"></div>
+		    					<textarea id="ftxt" class="dn" id="content"></textarea>
+
+								<input type="text" class="addpost-input" placeholder="URI" id="uri">
+								<input type="text" class="addpost-input" placeholder="Суретке сілтеме" id="img" onchange="showAlt()">
+								<input type="text" class="addpost-input" placeholder="Alt" id="alts" style="display: none;">
+								<textarea class="addpost-input" placeholder="Сипаттама" cols="25" id="desc"></textarea>
+								<input type="text" class="addpost-input" placeholder="Кілт сөздер" id="keys">
+								<input type="number" class="addpost-input" placeholder="Блок" value="0" id="block">
+								<input type="button" class="addpost-button" placeholder="Блок" value="Жариялау" onclick="addPost()">
+								<input type="hidden" value="1" id="id">
+								<input type="hidden" value="Nurdaulet Maksutov" id="autor">
+							</div>
+						</div>
+					</div>
+
+
+
+					
+								<p onclick="shownext('stat7')" class="shownext">Меню</p>
+								<div style="display: none;" id="stat7" class="dfjcc">
+									<div class="editsite">
+										<input type="text" placeholder="Контент" class="newuser" value="Басты бет" id="content-1">
+										<input type="text" placeholder="Тип" class="newuser" value="menu" id="type-1">
+										<input type="text" placeholder="Block" class="newuser" value="1" id="block-1">
+										<input type="button" value="Сақтау" class="newuseradd" onclick="editStat('1')"><br>
+										<input type="button" value="Жаңасын қосу" class="newuseradd" onclick="newItem('menu')"><br>
+									</div>
+								</div>
+
+								<p onclick="shownext('stat8')" class="shownext">Бағалар</p>
+								<div style="display: none;" id="stat8" class="dfjcc">
+									<div class="editsite">
+										<input type="text" placeholder="Контент" class="newuser" value="Басты бет" id="content-1">
+										<input type="text" placeholder="Тип" class="newuser" value="menu" id="type-1">
+										<input type="text" placeholder="Block" class="newuser" value="1" id="block-1">
+										<input type="button" value="Сақтау" class="newuseradd" onclick="editStat('1')"><br>
+										<input type="button" value="Жаңасын қосу" class="newuseradd" onclick="newItem('menu')"><br>
+									</div>
+								</div>
+
+								<p onclick="shownext('stat10')" class="shownext">Бағалар</p>
+								<div style="display: none;" id="stat10" class="dfjcc">
+									<div class="editsite">
+										<input type="text" placeholder="Контент" class="newuser" value="Басты бет" id="content-1">
+										<input type="text" placeholder="Тип" class="newuser" value="menu" id="type-1">
+										<input type="text" placeholder="Block" class="newuser" value="1" id="block-1">
+										<input type="button" value="Сақтау" class="newuseradd" onclick="editStat('1')"><br>
+										<input type="button" value="Жаңасын қосу" class="newuseradd" onclick="newItem('menu')"><br>
+									</div>
+								</div>
+							
